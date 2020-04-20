@@ -18,8 +18,8 @@ import java.util.Properties;
 
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.spring.musicmarket")
-@PropertySource("classpath:connection.properties")
+@EnableJpaRepositories(basePackages = "com.spring.musicmarket.repositories")
+@PropertySource("classpath:database.properties")
 public class AppContext {
 
     @Autowired
@@ -43,7 +43,7 @@ public class AppContext {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean=new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPackagesToScan(new String[]{
-                "com.master4.entities"
+                "com.spring.musicmarket.entities"
         });
         HibernateJpaVendorAdapter vendorAdapter=new HibernateJpaVendorAdapter();
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);

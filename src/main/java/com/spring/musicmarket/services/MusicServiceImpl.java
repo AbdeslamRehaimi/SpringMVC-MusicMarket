@@ -1,5 +1,6 @@
 package com.spring.musicmarket.services;
 
+
 import com.spring.musicmarket.entities.Music;
 import com.spring.musicmarket.exceptions.ResourceNotFoundException;
 import com.spring.musicmarket.repositories.MusicRepository;
@@ -11,18 +12,19 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class MusicServiceImpl implements MusicService {
+
     @Autowired
     private MusicRepository musicRepository;
 
     @Override
     @Transactional
-    public Page<Music> getAllMusic(Optional<Integer> pageNo, Integer pageSize, String sortBy) {
+    public Page<Music>  getAllMusic(Optional<Integer> pageNo, Integer pageSize, String sortBy)
+    {
         if(pageNo.isPresent()){
             Pageable paging = PageRequest.of(pageNo.get(), pageSize, Sort.by(sortBy));
             return musicRepository.findAll(paging);
@@ -49,10 +51,11 @@ public class MusicServiceImpl implements MusicService {
     @Override
     @Transactional
     public void save(Music music) {
-        musicRepository.save(music);
+         musicRepository.save(music);
     }
 
     @Override
+    @Transactional
     public void deleteById(long id) {
         musicRepository.deleteById(id);
     }

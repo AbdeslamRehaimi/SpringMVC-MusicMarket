@@ -1,5 +1,6 @@
 package com.spring.musicmarket.controllers;
 
+
 import com.spring.musicmarket.converter.MusicFormatter;
 import com.spring.musicmarket.entities.Album;
 import com.spring.musicmarket.entities.Music;
@@ -37,38 +38,39 @@ public class AlbumController {
     @GetMapping(value = {"/","/page/{id}"})
     public String home(@PathVariable(name="id",required = false) Optional<Integer> id, ModelMap model)
     {
-        Page<Album> pages = albumService.getAllAlbums(id, 3, "id");
-        model.addAttribute("pageable", pages);
-        return "album/list-album";
+            Page<Album> pages = albumService.getAllAlbums(id, 3, "id");
+            model.addAttribute("pageable", pages);
+        return "album/home";
     }
 
     @RequestMapping("/view/{id}")
     public String view(@PathVariable("id") long id,ModelMap model) throws ResourceNotFoundException {
-        model.addAttribute("music",albumService.findById(id));
+        model.addAttribute("album",albumService.findById(id));
         return "album/view";
     }
 
+
     @GetMapping("/add")
     public String add(ModelMap model,Album album) {
-        model.addAttribute("music", musicService.getAllMusic());
-        model.addAttribute("album", album);
-        return "album/add";
+            model.addAttribute("music", musicService.getAllMusic());
+            model.addAttribute("album", album);
+       return "album/add";
     }
 
     @GetMapping("/add/{id}")
     public String edit(@PathVariable("id") long id, ModelMap model) throws ResourceNotFoundException {
-        Album album =albumService.findByIdWithMusic(id);
-        List<Music> music = musicService.getAllMusic();
-        /*
+        Album album=albumService.findByIdWithMusic(id);
+        List<Music> music=musicService.getAllMusic();
         music.forEach(e->{
             album.getMusicList().forEach(t->{
-                if(e.getId() ==t.getId()){
-                    //e.setUsed(true);
-                }
-            });
+                 if(e.getId() ==t.getId()){
+                     e.setUsed(true);
+                 }
+             });
         });
-        */
         model.addAttribute("music", music);
+
+
         model.addAttribute("album", albumService.findByIdWithMusic(id));
         return "album/add";
     }
@@ -90,5 +92,6 @@ public class AlbumController {
         albumService.deleteById(id);
         return "redirect:/album/page/"+page;
     }
+
 
 }

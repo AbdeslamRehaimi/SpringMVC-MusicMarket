@@ -7,7 +7,10 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
+
 public interface AlbumService {
+
+
     public Page<Album> getAllAlbums(Optional<Integer> pageNo, Integer pageSize, String sortBy);
 
     Album findById(long id) throws ResourceNotFoundException;
@@ -17,5 +20,6 @@ public interface AlbumService {
     void deleteById(long id);
 
     Album findByIdWithMusic(@Param("id") long id);
+
 
 }

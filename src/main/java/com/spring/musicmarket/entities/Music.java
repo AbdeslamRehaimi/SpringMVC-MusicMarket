@@ -1,5 +1,6 @@
 package com.spring.musicmarket.entities;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,15 +11,17 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
-@Setter
-@Getter
+@NoArgsConstructor
+@Setter @Getter
 @Entity
-@Table(name = "music")
-public class Music implements Serializable {
+@Table(name="music")
+public class Music implements Serializable{
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -51,53 +54,17 @@ public class Music implements Serializable {
     //@Size(min = 1, max = 500)
     //@Basic(optional = false)
     @Column(name = "image")
-    //@NotBlank(message = "image et obligatoire !")
-    //@NotNull
     private String image;
+
 
     @ManyToMany(mappedBy="musicList")
     List<Album> albumList;
 
-    public Music() {
-    }
 
-    public long getId() {
-        return id;
-    }
+    @Transient
+    private Boolean used;
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public double getLongueur() {
-        return longueur;
-    }
-
-    public void setLongueur(double longueur) {
-        this.longueur = longueur;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public Music(long id) {
+        this.id=id;
     }
 }

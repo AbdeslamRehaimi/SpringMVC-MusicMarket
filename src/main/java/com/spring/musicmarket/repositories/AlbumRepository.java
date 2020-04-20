@@ -6,11 +6,22 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-public interface AlbumRepository extends JpaRepository<Album, Long> {
-    Page<Album> findAll(Pageable pageable);
+
+
+@Repository
+public interface AlbumRepository extends JpaRepository<Album, Long>  {
+
+
+    Page<Album> findAll(Pageable pageable); // revoie limiter les element par page
 
 
     @Query("select a from Album a left join fetch a.musicList where a.id=:id")
-    Album findByIdWithMusic(@Param("id") long id);
+    Album findByIdWithTags(@Param("id") long id);
+
+
+
+
+
 }

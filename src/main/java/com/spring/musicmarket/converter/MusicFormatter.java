@@ -8,6 +8,9 @@ import java.util.Collection;
 
 public class MusicFormatter extends CustomCollectionEditor {
 
+
+
+
     public MusicFormatter(Class<? extends Collection> collectionType ) {
         super(collectionType);
     }
@@ -16,10 +19,12 @@ public class MusicFormatter extends CustomCollectionEditor {
     @Override
     protected Object convertElement(Object element) {
         if(!element.equals(null)) {
-            Music music =  new Music();
-            return music;
+            Music tag =  new Music(Long.parseLong(String.valueOf(element)));
+            return tag;
         }else{
             return null;
         }
     }
+
+
 }

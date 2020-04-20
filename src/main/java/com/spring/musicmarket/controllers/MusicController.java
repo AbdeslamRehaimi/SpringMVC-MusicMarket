@@ -1,5 +1,6 @@
 package com.spring.musicmarket.controllers;
 
+
 import com.spring.musicmarket.entities.Music;
 import com.spring.musicmarket.exceptions.ResourceNotFoundException;
 import com.spring.musicmarket.services.MusicService;
@@ -20,18 +21,19 @@ public class MusicController {
     @Autowired
     private MusicService musicService;
 
-    @GetMapping(value = {"/","/music/{id}"})
+    @GetMapping(value = {"/","/page/{id}"})
     public String home(@PathVariable(name="id",required = false) Optional<Integer> id, ModelMap model)
     {
-        Page<Music> pages = musicService.getAllMusic(id, 1, "id");
-        model.addAttribute("pageable", pages);
+            Page<Music> pages = musicService.getAllMusic(id, 1, "id");
+            model.addAttribute("pageable", pages);
         return "music/home";
     }
 
+
     @GetMapping("/add")
     public String add(ModelMap model,Music music) {
-        model.addAttribute("music", music);
-        return "music/add";
+            model.addAttribute("music", music);
+       return "music/add";
     }
 
     @GetMapping("/add/{id}")
@@ -55,4 +57,5 @@ public class MusicController {
         musicService.deleteById(id);
         return "redirect:/music/page/"+page;
     }
+
 }

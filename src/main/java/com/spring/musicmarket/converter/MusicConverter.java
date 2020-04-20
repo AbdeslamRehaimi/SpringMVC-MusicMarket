@@ -9,14 +9,13 @@ import java.util.List;
 public class MusicConverter implements Converter<List<String>, Object> {
 
     @Override
-    public List<Music> convert(List<String> strings) {
-        List<Music> musicList=new ArrayList<>();
-        if(strings.isEmpty()) {
-            return null;
-        }else{
-            //strings.forEach(e->musicList.add(new Music(Long.parseLong(e))));
-            strings.forEach(e->musicList.add(new Music()));
-            return musicList;
-        }
+    public List<Music> convert(List<String> source) {
+       List<Music> listTag=new ArrayList<>();
+       if(source.isEmpty()) {
+           return null;
+       }else{
+            source.forEach(e->listTag.add(new Music(Long.parseLong(e))));
+            return listTag;
+       }
     }
 }

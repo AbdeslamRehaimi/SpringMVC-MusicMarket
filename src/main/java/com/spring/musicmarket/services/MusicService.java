@@ -7,7 +7,10 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 import java.util.Optional;
 
+
 public interface MusicService {
+
+
     public Page<Music> getAllMusic(Optional<Integer> pageNo, Integer pageSize, String sortBy);
     public List<Music> getAllMusic();
 
@@ -16,4 +19,5 @@ public interface MusicService {
     void save(Music music);
 
     void deleteById(long id);
+
 }
