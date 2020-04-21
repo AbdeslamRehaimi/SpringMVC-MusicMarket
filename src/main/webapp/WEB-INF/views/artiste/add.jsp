@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: TOSHIBA
-  Date: 20/04/2020
-  Time: 00:45
+  Date: 21/04/2020
+  Time: 00:56
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -20,51 +20,38 @@
     <div class="row">
         <div class="col-md-6 offset-3 ">
             <div class="card">
-                <div class="card-header">Nouveau Album</div>
+                <div class="card-header">Nouveau Artist</div>
                 <form action="login" cssClass="form-horizontal" method="get" modelAttribute="user">
                     <div class="card-body row">
 
                         <div class="form-group col-md-6 required text-danger">
-                            <label>Titre</label>
-                            <input type="text" name="titre" value="" class="form-control is-invalid">
+                            <label>Nom Reel</label>
+                            <input type="text" name="reelnom" value="" class="form-control is-invalid">
                             <div class="invalid-feedback">validation.required</div>
                         </div>
 
                         <div class="form-group col-md-6 required text-danger">
-                            <label>Genre</label>
-                            <select name="genre" class="form-control">
-                                <option value="">-</option>
-                                <option value="Admin">Admin</option>
-                                <option value="Admin">Admin</option>
-                                <option value="User">User</option>
-                                <option value="Admin">Admin</option>
-                                <option value="User">User</option>
-                                <option value="Admin">Admin</option>
-                                <option value="User">User</option>
-                                <option value="User">User</option>
-                            </select>
-                        </div>
-
-
-                        <div class="form-group col-md-6 required text-danger">
-                            <label>Date Sortie</label>
-                            <input type="date" name="motdepasse" autocomplete="off" class="form-control is-invalid">
+                            <label>Artist Nom</label>
+                            <input type="text" name="artistnom" value="" class="form-control is-invalid">
                             <div class="invalid-feedback">validation.required</div>
                         </div>
 
 
-                        <div class="form-group col-md-6 required text-danger">
-                            <label>Maison Disque</label>
-                            <input type="text" name="repetermotdepasse" autocomplete="off" class="form-control is-invalid">
+                        <div class="form-group col-sm-12 required text-danger">
+                            <label>Email</label>
+                            <input type="text" name="email" value="" class="form-control is-invalid">
                             <div class="invalid-feedback">validation.required</div>
                         </div>
+
 
                         <div class="form-group col-sm-12">
-                            <label>Artist</label>
-                            <select name="artist" class="form-control">
+                            <label>Nationaliter</label>
+                            <select name="nationaliter" class="form-control">
                                 <option value="">-</option>
-                                <option value="Madeon">Madeon</option>
-                                <option value="Cormak">Cormak</option>
+                                <option value="France">France</option>
+                                <option value="Ukraine">Ukraine</option>
+                                <option value="Sweeden">Sweeden</option>
+                                <option value="Morocco">Morocco</option>
                             </select>
                         </div>
 
@@ -80,7 +67,6 @@
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
