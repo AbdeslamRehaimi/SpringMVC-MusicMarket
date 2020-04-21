@@ -49,7 +49,14 @@ public class Music implements Serializable{
     @Column(name = "longueur")
     @NotBlank(message = "Vous devez indiquer le longueur de cette morceau !")
     @NotNull
-    private double longueur;
+    private String longueur;
+
+    @Size(min = 1, max = 100)
+    @Basic(optional = false)
+    @Column(name = "artistsparticiper")
+    @NotBlank(message = "Vous devez indiquer les artists ayant participer !")
+    @NotNull
+    private String artistsparticiper;
 
     //@Size(min = 1, max = 500)
     //@Basic(optional = false)

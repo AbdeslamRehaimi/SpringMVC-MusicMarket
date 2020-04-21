@@ -58,6 +58,7 @@ public class Artiste implements Serializable {
     @Email
     private String email;
 
+
     //@Size(min = 1, max = 500)
     //@Basic(optional = false)
     @Column(name = "image")

@@ -29,6 +29,7 @@ public class AlbumController {
     @Autowired
     private MusicService musicService;
 
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(List.class, "musicList",
@@ -40,13 +41,13 @@ public class AlbumController {
     {
             Page<Album> pages = albumService.getAllAlbums(id, 3, "id");
             model.addAttribute("pageable", pages);
-        return "album/home";
+        return "album/list";
     }
 
     @RequestMapping("/view/{id}")
     public String view(@PathVariable("id") long id,ModelMap model) throws ResourceNotFoundException {
         model.addAttribute("album",albumService.findById(id));
-        return "album/view";
+        return "album/show";
     }
 
 
@@ -54,7 +55,7 @@ public class AlbumController {
     public String add(ModelMap model,Album album) {
             model.addAttribute("music", musicService.getAllMusic());
             model.addAttribute("album", album);
-       return "album/add";
+        return "album/add";
     }
 
     @GetMapping("/add/{id}")

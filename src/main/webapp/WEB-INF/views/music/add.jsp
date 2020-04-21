@@ -21,49 +21,55 @@
         <div class="col-md-6 offset-3 ">
             <div class="card">
                 <div class="card-header">Morceau Musical</div>
-                <form action="login" cssClass="form-horizontal" method="get" modelAttribute="user">
+                    <form:form action="save"  method="post" modelAttribute="music">
                     <div class="card-body row">
 
-                        <div class="form-group col-md-6 required text-danger">
+                        <div class="form-group col-md-6 required">
                             <label>Titre</label>
-                            <input type="text" name="titre" value="" class="form-control is-invalid">
-                            <div class="invalid-feedback">validation.required</div>
+                            <form:input path="titre" type="text" name="titre"  class="form-control "></form:input>
+                            <form:errors path="titre"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
-                        <div class="form-group col-md-6 required text-danger">
+                        <div class="form-group col-md-6 required ">
                             <label>Genre</label>
-                            <select name="genre" class="form-control">
-                                <option value="">-</option>
-                                <option value="Admin">Admin</option>
-                                <option value="Admin">Admin</option>
-                                <option value="User">User</option>
-                                <option value="Admin">Admin</option>
-                                <option value="User">User</option>
-                                <option value="Admin">Admin</option>
-                                <option value="User">User</option>
-                                <option value="User">User</option>
-                            </select>
+                            <form:select path="genre" name="module" class="form-control"  >
+                                <form:option value="">-----</form:option>
+                                <form:option value="Dance/EDM">Dance/EDM</form:option>
+                                <form:option value="Disco">Disco</form:option>
+                                <form:option value="Jazz">Jazz</form:option>
+                                <form:option value="Pop">Pop</form:option>
+                                <form:option value="Funk">Funk</form:option>
+                                <form:option value="Dubstep">Dubstep</form:option>
+                                <form:option value="Deathstep">Deathstep</form:option>
+                                <form:option value="Other">Other</form:option>
+                            </form:select>
+                            <form:errors path="genre"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
 
-                        <div class="form-group col-sm-12 required text-danger">
+                        <div class="form-group col-sm-12 required ">
                             <label>Longueur</label>
-                            <input type="text" name="longueur" value="" class="form-control is-invalid">
-                            <div class="invalid-feedback">validation.required</div>
+                            <form:input path="longueur" type="text" name="longueur"  class="form-control"></form:input>
+                            <form:errors path="longueur"  class="invalid-feedback"  cssStyle="color: red" />
+                        </div>
+
+                        <div class="form-group col-sm-12 required ">
+                            <label>Artists Participer</label>
+                            <form:input path="artistsparticiper" type="text" name="artistsparticiper"  class="form-control"></form:input>
+                            <form:errors path="artistsparticiper"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
 
-                        <div class="form-group col-sm-12 required text-danger">
+                        <div class="form-group col-sm-12  ">
                             <label>Image</label>
-                            <input type="text" name="text" value="" class="form-control is-invalid">
-                            <div class="invalid-feedback">validation.required</div>
+                            <form:input path="image" type="text" name="image" placeholder="Path image" class="form-control"></form:input>
                         </div>
 
                         <div class="form-group col-md-12">
-                            <a class="btn btn-success btn-block" href="index.html">Inscription</a>
+                            <form:button class="btn btn-success btn-block">Valider</form:button>
                         </div>
                     </div>
-                </form>
+                    </form:form>
             </div>
         </div>
     </div>

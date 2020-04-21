@@ -40,8 +40,8 @@
         <div style="text-align: center;"><h1>Bienvenu</h1></div>
 
         <div style="text-align: center;">
-            <input  type="button" value="Begin Adventure"
-                    onclick="window.location.href='user/login'; return false;"
+            <input  type="button" style="border-radius: 50px;" value="Begin Adventure"
+                    onclick="window.location.href='music/'; return false;"
                     class="btn btn-primary" />
         </div>
     </fieldset>

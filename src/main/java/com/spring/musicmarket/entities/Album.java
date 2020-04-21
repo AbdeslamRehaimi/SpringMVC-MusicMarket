@@ -50,7 +50,7 @@ public class Album implements Serializable{
     @Column(name = "dateSortie")
     @NotBlank(message = "Vous devez indiquer la date sortie !")
     @NotNull
-    private Date dateSortie;
+     private String dateSortie;
 
     @Size(min = 1, max = 100)
     @Basic(optional = false)
