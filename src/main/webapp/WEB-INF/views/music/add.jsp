@@ -62,7 +62,11 @@
 
                         <div class="form-group col-sm-12  ">
                             <label>Image</label>
-                            <form:input path="image" type="text" name="image" placeholder="Path image" class="form-control"></form:input>
+                            <form:select path="image" name="image"  class="form-control"  >
+                                <form:option value="No Image Provided !">Choisirs</form:option>
+                                <form:option value="madeon.jpg">Madeon</form:option>
+                                <form:option value="No Image Provided !">Aucun</form:option>
+                            </form:select>
                         </div>
 
                         <div class="form-group col-md-12">

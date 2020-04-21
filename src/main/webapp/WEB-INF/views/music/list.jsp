@@ -84,7 +84,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Titre</th>
-                        <th>Artiste</th>
+                        <th>Artistes Participer</th>
                         <th>Genre</th>
                         <th>Longueur</th>
                         <th>Image</th>
@@ -94,13 +94,16 @@
                         <tr>
                             <td>${item.id}</td>
                             <td>${item.titre}</td>
-                            <td>${item.titre}</td>
+                            <td>${item.artistsparticiper}</td>
                             <td>${item.genre} </td>
                             <td>${item.longueur} </td>
                             <td>
+
                                 <c:choose>
-                                    <c:when test="${temp.image.length()>20}">
-                                        <img width="80px" height="30px" src="${item.image}" alt="image">
+                                    <c:when test="${item.image.length()<12}">
+                                        <div style="text-align: center;">
+                                            <img width="80px" height="80px" style="border-radius: 50%;" src="<c:url value="/resources/images/artists/${item.image}"/>" alt="image">
+                                        </div>
                                     </c:when>
                                     <c:otherwise>
                                         ${item.image}

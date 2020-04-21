@@ -21,52 +21,56 @@
         <div class="col-md-6 offset-3 ">
             <div class="card">
                 <div class="card-header">Nouveau Artist</div>
-                <form action="login" cssClass="form-horizontal" method="get" modelAttribute="user">
+                <form:form action="save"  method="post" modelAttribute="artist">
                     <div class="card-body row">
 
-                        <div class="form-group col-md-6 required text-danger">
+                        <div class="form-group col-md-6 required">
                             <label>Nom Reel</label>
-                            <input type="text" name="reelnom" value="" class="form-control is-invalid">
-                            <div class="invalid-feedback">validation.required</div>
+                            <form:input path="nomreel" type="text" name="nomreel"  class="form-control "></form:input>
+                            <form:errors path="nomreel"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
-                        <div class="form-group col-md-6 required text-danger">
+                        <div class="form-group col-md-6 required">
                             <label>Artist Nom</label>
-                            <input type="text" name="artistnom" value="" class="form-control is-invalid">
-                            <div class="invalid-feedback">validation.required</div>
+                            <form:input path="artistnom" type="text" name="artistnom"  class="form-control "></form:input>
+                            <form:errors path="artistnom"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
 
                         <div class="form-group col-sm-12 required text-danger">
                             <label>Email</label>
-                            <input type="text" name="email" value="" class="form-control is-invalid">
-                            <div class="invalid-feedback">validation.required</div>
+                            <form:input path="email" type="text" name="email" value="" class="form-control is-invalid"></form:input>
+                            <form:errors path="email"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
 
                         <div class="form-group col-sm-12">
                             <label>Nationaliter</label>
-                            <select name="nationaliter" class="form-control">
-                                <option value="">-</option>
-                                <option value="France">France</option>
-                                <option value="Ukraine">Ukraine</option>
-                                <option value="Sweeden">Sweeden</option>
-                                <option value="Morocco">Morocco</option>
-                            </select>
+                            <form:select path="nationaliter" name="nationaliter" class="form-control">
+                                <form:option value="">-</form:option>
+                                <form:option value="France">France</form:option>
+                                <form:option value="Ukraine">Ukraine</form:option>
+                                <form:option value="Sweeden">Sweeden</form:option>
+                                <form:option value="Morocco">Morocco</form:option>
+                            </form:select>
+                            <form:errors path="nationaliter"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
 
-                        <div class="form-group col-sm-12 required text-danger">
+                        <div class="form-group col-sm-12  ">
                             <label>Image</label>
-                            <input type="text" name="text" value="" class="form-control is-invalid">
-                            <div class="invalid-feedback">validation.required</div>
+                            <form:select path="image" name="image"  class="form-control"  >
+                                <form:option value="No Image Provided !">Choisirs</form:option>
+                                <form:option value="madeon.jpg">Madeon</form:option>
+                                <form:option value="No Image Provided !">Aucun</form:option>
+                            </form:select>
                         </div>
 
                         <div class="form-group col-md-12">
-                            <a class="btn btn-success btn-block" href="index.html">Valider</a>
+                            <form:button class="btn btn-success btn-block">Valider</form:button>
                         </div>
                     </div>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>

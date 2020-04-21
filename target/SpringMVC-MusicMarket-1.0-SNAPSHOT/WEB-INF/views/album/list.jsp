@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Title</title>
@@ -33,6 +34,9 @@
     </style>
 </head>
 <body>
+
+<fmt:formatDate type="Date" value="2020-04-21 00:00:00" />
+
 <div class="artist-header">
     <div class="artist-profile">
         <fieldset>
