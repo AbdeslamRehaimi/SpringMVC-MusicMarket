@@ -11,7 +11,7 @@
 ![01 - image](https://github.com/AbdeslamRehaimi/SpringMVC-MusicMarket/blob/master/imagesM/2.png)
 ### Form with fileds validation for adding new music
 ![01 - image](https://github.com/AbdeslamRehaimi/SpringMVC-MusicMarket/blob/master/imagesM/3.png)
-### Liste Albums witch its music contents
+### Liste Albums with its music contents
 ![01 - image](https://github.com/AbdeslamRehaimi/SpringMVC-MusicMarket/blob/master/imagesM/4.png)
 ### Form with fileds validation for adding new album ands its content and the awner artist
 ![01 - image](https://github.com/AbdeslamRehaimi/SpringMVC-MusicMarket/blob/master/imagesM/5.png)
