@@ -85,9 +85,6 @@
             </div>
         </div>
     </div>
-    <div>
-        <a style="float: left;" class="btn btn-danger" href="/SpringMVC_MusicMarket_war/album/">Returne</a>
-    </div>
 </div>
 </body>
 </html>

@@ -61,7 +61,7 @@
                 <h1> <span style="color: #ffffff;">SpringMVC</span> Music Market </h1>
             </div>
             <hr />
-            <h3 style=" text-align: center; margin-top: 80px; color: aliceblue; ">Ensemble Morceau Musicaux Disponible</h3>
+            <h3 style=" text-align: center; margin-top: 80px; color: aliceblue; ">Ensemble De Nos Artistes</h3>
         </fieldset>
     </div>
 </div>
