@@ -18,21 +18,29 @@
 <body>
 <div class="container">
     <div class="row">
+
         <div class="col-md-6 offset-3 ">
+            <br><br><br>
+            <div >
+                <a style="float: left;" class="btn btn-danger" href="${pageContext.request.contextPath}/music/" >Returne</a>
+            </div>
+            <br><br>
             <div class="card">
                 <div class="card-header">Morceau Musical</div>
-                    <form:form action="save"  method="post" modelAttribute="music">
+                    <form:form action="${pageContext.request.contextPath}/music/save"  method="post" modelAttribute="music">
                     <div class="card-body row">
+
+                        <form:input path="id" type="hidden" />
 
                         <div class="form-group col-md-6 required">
                             <label>Titre</label>
-                            <form:input path="titre" type="text" name="titre"  class="form-control "></form:input>
+                            <form:input path="titre" type="text" name="titre"  class="form-control is-invalid"></form:input>
                             <form:errors path="titre"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
                         <div class="form-group col-md-6 required ">
                             <label>Genre</label>
-                            <form:select path="genre" name="module" class="form-control"  >
+                            <form:select path="genre" name="module" class="form-control is-invalid"  >
                                 <form:option value="">-----</form:option>
                                 <form:option value="Dance/EDM">Dance/EDM</form:option>
                                 <form:option value="Disco">Disco</form:option>
@@ -49,22 +57,29 @@
 
                         <div class="form-group col-sm-12 required ">
                             <label>Longueur</label>
-                            <form:input path="longueur" type="text" name="longueur"  class="form-control"></form:input>
+                            <form:input path="longueur" type="text" name="longueur"  class="form-control is-invalid"></form:input>
                             <form:errors path="longueur"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
                         <div class="form-group col-sm-12 required ">
                             <label>Artists Participer</label>
-                            <form:input path="artistsparticiper" type="text" name="artistsparticiper"  class="form-control"></form:input>
+                            <form:input path="artistsparticiper" type="text" name="artistsparticiper"  class="form-control is-invalid"></form:input>
                             <form:errors path="artistsparticiper"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
 
                         <div class="form-group col-sm-12  ">
                             <label>Image</label>
-                            <form:select path="image" name="image"  class="form-control"  >
-                                <form:option value="No Image Provided !">Choisirs</form:option>
-                                <form:option value="madeon.jpg">Madeon</form:option>
+                            <form:select path="image" name="image"  class="form-control is-invalid"  >
+                                <form:option value="">Choisirs</form:option>
+                                <form:option value="madeon.jpg">Artiste 1</form:option>
+                                <form:option value="image1.jpg">Artiste 2</form:option>
+                                <form:option value="image2.jpg">Artiste 3</form:option>
+                                <form:option value="image3.jpg">Artiste 4</form:option>
+                                <form:option value="image4.jpg">Artiste 5</form:option>
+                                <form:option value="image5.jpg">Artiste 6</form:option>
+                                <form:option value="image6.jpg">Artiste 7</form:option>
+                                <form:option value="image7.jpg">Artiste 8</form:option>
                                 <form:option value="No Image Provided !">Aucun</form:option>
                             </form:select>
                         </div>

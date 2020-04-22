@@ -28,6 +28,8 @@
             width: 150px;
             border: 5px solid #48ff0c;
         }
+
+
         input{
             border-radius: 50px;
         }
@@ -35,7 +37,6 @@
 </head>
 <body>
 
-<fmt:formatDate type="Date" value="2020-04-21 00:00:00" />
 
 <div class="artist-header">
     <div class="artist-profile">
@@ -62,7 +63,7 @@
                    class="btn btn-primary" />
 
             <input type="button" style="float: right;border-radius: 50px;" value="Consultation Artists"
-                   onclick="window.location.href='${pageContext.request.contextPath}/artist/'; return false;"
+                   onclick="window.location.href='${pageContext.request.contextPath}/artiste/'; return false;"
                    class="btn btn-primary" />
 
             <br/><br/>
@@ -72,18 +73,20 @@
 
 <div class="artist-contents">
 
+    <c:forEach items="${pageable.content}" var="item">
     <!--ça sera repeter plusieur fois-->
     <div class="album-content">
         <div class="container">
             <div class="row">
                 <br><br>
                 <div class="col-md-4 col-sm-4 ">
-                    <h2>Album GoodFaith</h2>
+                    <h2>Album ${item.titre}</h2>
                     <div class="blok1">
-                        <img src="freak/albumGF.jpg" class="albimage">
-                        <div style="display: block; margin: 35px;">
-                            <img src="freak/user.jpg" class="user" width="80px" height="80px">
-                            <h2>Madeon</h2>
+                        <img src="<c:url value="/resources/images/albums/${item.image}"/>" alt="image" class="albimage">
+                        <div style="display: block; margin: 35px; align-items: center">
+                            <img src="<c:url value="/resources/images/artists/${item.artiste.image}"/>" class="user" width="80px" height="80px">
+
+                            <a href="${pageContext.request.contextPath}/album/show/${item.id}" ><h2>${item.artiste.artistnom}</h2></a>
                         </div>
                     </div>
                 </div>
@@ -99,83 +102,58 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <c:forEach var="musica" items="${item.musicList}">
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <th scope="row">${musica.id}</th>
+                            <td>${musica.titre}</td>
+                            <td>${musica.genre}</td>
+                            <td>${musica.longueur}</td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
     <hr style="width: 50%; color: black; background-color: black;">
-    <!--ça sera repeter plusieur fois-->
-    <div class="album-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4 ">
-                    <h2>Album GoodFaith</h2>
-                    <div class="blok1">
-                        <img src="freak/albumGF.jpg" class="albimage">
-                        <div style="display: block; margin: 35px;">
-                            <img src="freak/user.jpg" class="user" width="80px" height="80px">
-                            <h2>Madeon</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8 col-sm-8">
-                    <h2>Ensembles des morceaux</h2>
-                    <table class="table table-bordered table-hover col-md-12 col-xl-12 col-sm-12">
-                        <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Titre</th>
-                            <th scope="col">Genre</th>
-                            <th scope="col">Longueur</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
+    </c:forEach>
 
-                        </tbody>
-                    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-6">
+                <div style="text-align: center;">
+                <nav aria-label="Page navigation example " >
+                    <ul class="pagination">
+                        <c:choose>
+                            <c:when test="${pageable.number !=0 }">
+                                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/album/page/${pageable.number-1 }">Previous</a></li>
+                            </c:when>
+                        </c:choose>
+                        <c:forEach begin="0"   end="${pageable.totalPages -1}" var="i">
+                            <c:choose>
+                                <c:when test="${pageable.number ==i }">
+                                    <li class="page-item disabled"><a class="page-link" href="${pageContext.request.contextPath}/album/page/${i}">${i}</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/album/page/${i}">${i}</a></li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        <c:choose>
+                            <c:when test="${pageable.number <pageable.totalPages-1 }">
+                                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/album/page/${pageable.number+1 }">Next</a></li>
+                            </c:when>
+                        </c:choose>
+                    </ul>
+                </nav>
                 </div>
             </div>
         </div>
     </div>
+
+
 </div>
 
 </body>

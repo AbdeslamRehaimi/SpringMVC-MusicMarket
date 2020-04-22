@@ -71,7 +71,7 @@ public class Album implements Serializable{
     private Artiste artiste;
 
     @Size(min=1,message = "Vous devez choisis des titre pour cette album")
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="albums_music", joinColumns={@JoinColumn(referencedColumnName="id")}
             , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})
     List<Music> musicList;

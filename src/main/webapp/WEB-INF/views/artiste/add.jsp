@@ -19,20 +19,26 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-3 ">
+            <br><br><br>
+            <div >
+                <a style="float: left;" class="btn btn-danger" href="${pageContext.request.contextPath}/artiste/" >Returne</a>
+            </div>
+            <br><br>
             <div class="card">
                 <div class="card-header">Nouveau Artist</div>
-                <form:form action="save"  method="post" modelAttribute="artist">
+                <form:form action="${pageContext.request.contextPath}/artiste/save"  method="post" modelAttribute="artiste">
                     <div class="card-body row">
+                        <form:input path="id" type="hidden" />
 
                         <div class="form-group col-md-6 required">
                             <label>Nom Reel</label>
-                            <form:input path="nomreel" type="text" name="nomreel"  class="form-control "></form:input>
+                            <form:input path="nomreel" type="text" name="nomreel" value="" class="form-control is-invalid"></form:input>
                             <form:errors path="nomreel"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
                         <div class="form-group col-md-6 required">
                             <label>Artist Nom</label>
-                            <form:input path="artistnom" type="text" name="artistnom"  class="form-control "></form:input>
+                            <form:input path="artistnom" type="text" name="artistnom" value=""  class="form-control is-invalid"></form:input>
                             <form:errors path="artistnom"  class="invalid-feedback"  cssStyle="color: red" />
                         </div>
 
@@ -46,11 +52,14 @@
 
                         <div class="form-group col-sm-12">
                             <label>Nationaliter</label>
-                            <form:select path="nationaliter" name="nationaliter" class="form-control">
+                            <form:select path="nationaliter" name="nationaliter" class="form-control is-invalid">
                                 <form:option value="">-</form:option>
                                 <form:option value="France">France</form:option>
                                 <form:option value="Ukraine">Ukraine</form:option>
                                 <form:option value="Sweeden">Sweeden</form:option>
+                                <form:option value="Morocco">USA</form:option>
+                                <form:option value="Morocco">Canada</form:option>
+                                <form:option value="Morocco">Italy</form:option>
                                 <form:option value="Morocco">Morocco</form:option>
                             </form:select>
                             <form:errors path="nationaliter"  class="invalid-feedback"  cssStyle="color: red" />
@@ -59,10 +68,16 @@
 
                         <div class="form-group col-sm-12  ">
                             <label>Image</label>
-                            <form:select path="image" name="image"  class="form-control"  >
-                                <form:option value="No Image Provided !">Choisirs</form:option>
-                                <form:option value="madeon.jpg">Madeon</form:option>
-                                <form:option value="No Image Provided !">Aucun</form:option>
+                            <form:select path="image" name="image"  class="form-control "  >
+                                <form:option value="">Choisirs</form:option>
+                                <form:option value="madeon.jpg">Artiste 1</form:option>
+                                <form:option value="image7.jpg">Artiste 2</form:option>
+                                <form:option value="image2.jpg">Artiste 3</form:option>
+                                <form:option value="image3.jpg">Artiste 4</form:option>
+                                <form:option value="image4.jpg">Artiste 5</form:option>
+                                <form:option value="image5.jpg">Artiste 6</form:option>
+                                <form:option value="image6.jpg">Artiste 7</form:option>
+                                 <form:option value="No Image Provided !">Aucun</form:option>
                             </form:select>
                         </div>
 

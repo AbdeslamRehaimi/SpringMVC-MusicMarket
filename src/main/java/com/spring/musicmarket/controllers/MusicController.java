@@ -24,7 +24,7 @@ public class MusicController {
     @GetMapping(value = {"/","/page/{id}"})
     public String home(@PathVariable(name="id",required = false) Optional<Integer> id, ModelMap model)
     {
-        Page<Music> pages = musicService.getAllMusic(id, 8, "id");
+        Page<Music> pages = musicService.getAllMusic(id, 4, "id");
         model.addAttribute("pageable", pages);
         return "music/list";
     }

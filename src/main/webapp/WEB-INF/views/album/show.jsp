@@ -16,15 +16,32 @@
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+    <style>
+        h1 {
+            color: #fff70a;
+        }
+
+        h2 {
+            color: chocolate;
+        }
+        hr {
+            width: 150px;
+            border: 5px solid #48ff0c;
+        }
+
+
+        input{
+            border-radius: 50px;
+        }
+    </style>
 </head>
 <body>
 <div class="artist-header">
     <div class="artist-profile">
-        <img src="freak/user.jpg" class="user">
+        <img src="<c:url value="/resources/images/artists/${album.artiste.image}"/>" class="user">
         <h1>Madeon</h1>
     </div>
 </div>
-<fmt:formatDate type="Date" value="2020-04-21 00:00:00" />
 
 <div class="artist-contents">
     <!--ça sera repeter plusieur fois-->
@@ -32,13 +49,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-sm-4 ">
-                    <h2>Album GoodFaith</h2>
+                    <h2>Album ${album.titre}</h2>
                     <div class="blok1">
-                        <img src="freak/albumGF.jpg" class="albimage">
+                        <img src="<c:url value="/resources/images/albums/${album.image}"/>" class="albimage">
                         <ul>
-                            <li class="data">15/05/2019</li>
-                            <li class="data">Good Faith</li>
-                            <li class="data">12 Morceaux</li>
+                            <li class="data">${album.dateSortie}</li>
+                            <li class="data">${album.titre}</li>
+                            <li class="data">${album.musicList.size()} Morceaux</li>
                         </ul>
                     </div>
                 </div>
@@ -54,25 +71,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-
+                        <c:forEach var="musica" items="${album.musicList}">
+                            <tr>
+                                <th scope="row">${musica.id}</th>
+                                <td>${musica.titre}</td>
+                                <td>${musica.genre}</td>
+                                <td>${musica.longueur}</td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>

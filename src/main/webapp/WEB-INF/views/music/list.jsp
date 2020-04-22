@@ -12,6 +12,7 @@
 <head>
     <title>Title</title>
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
     <style>
@@ -30,6 +31,8 @@
             border-radius: 50px;
         }
 
+
+
         .page-header {
             position: relative;
             overflow: hidden;
@@ -37,7 +40,7 @@
             z-index: 1;
             box-sizing: border-box;
             vertical-align: top;
-            background-color: #000000d1;
+            background-color: #350000;
         }
         .spacing {
             padding-top: 80px;
@@ -80,29 +83,24 @@
                 <div style="color: black" class="panel-title">Morceau Musicaux</div>
             </div>
             <div class="panel-body">
-                <table class="table table-hover table-bordered table-dark ">
+                <table class="table table-bordered table-hover  ">
                     <tr>
-                        <th>Id</th>
+                         <th>Image</th>
                         <th>Titre</th>
                         <th>Artistes Participer</th>
                         <th>Genre</th>
                         <th>Longueur</th>
-                        <th>Image</th>
+
                         <th>Action</th>
                     </tr>
                     <c:forEach items="${pageable.content}" var="item">
                         <tr>
-                            <td>${item.id}</td>
-                            <td>${item.titre}</td>
-                            <td>${item.artistsparticiper}</td>
-                            <td>${item.genre} </td>
-                            <td>${item.longueur} </td>
-                            <td>
+                             <td>
 
                                 <c:choose>
                                     <c:when test="${item.image.length()<12}">
                                         <div style="text-align: center;">
-                                            <img width="80px" height="80px" style="border-radius: 50%;" src="<c:url value="/resources/images/artists/${item.image}"/>" alt="image">
+                                            <img width="50px" height="50px" style="border-radius: 50%;" src="<c:url value="/resources/images/music/${item.image}"/>" alt="image">
                                         </div>
                                     </c:when>
                                     <c:otherwise>
@@ -110,6 +108,11 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
+                            <td>${item.titre}</td>
+                            <td>${item.artistsparticiper}</td>
+                            <td>${item.genre} </td>
+                            <td>${item.longueur} </td>
+
 
                             <td>
                                 <a href="${pageContext.request.contextPath}/music/delete/${pageable.number}/${item.id}" class="btn btn-danger"

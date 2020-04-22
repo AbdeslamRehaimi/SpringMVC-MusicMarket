@@ -22,7 +22,7 @@ public class ArtisteController {
     @GetMapping(value = {"/","/page/{id}"})
     public String home(@PathVariable(name="id",required = false) Optional<Integer> id, ModelMap model)
     {
-        Page<Artiste> pages = artisteService.getAllArtiste(id, 8, "id");
+        Page<Artiste> pages = artisteService.getAllArtiste(id, 5, "id");
         model.addAttribute("pageable", pages);
         return "artiste/list";
     }
@@ -41,6 +41,7 @@ public class ArtisteController {
     }
 
     @PostMapping("/save")
+    //@RequestMapping(value="/artiste/save", method = RequestMethod.POST)
     public String saveArtiste(@Valid @ModelAttribute("artiste") Artiste artiste, BindingResult result, ModelMap model) throws ResourceNotFoundException {
         if(result.hasErrors()){
             model.addAttribute("artiste",artiste);

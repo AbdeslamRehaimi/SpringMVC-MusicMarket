@@ -6,6 +6,7 @@ import com.spring.musicmarket.entities.Album;
 import com.spring.musicmarket.entities.Music;
 import com.spring.musicmarket.exceptions.ResourceNotFoundException;
 import com.spring.musicmarket.services.AlbumService;
+import com.spring.musicmarket.services.ArtisteService;
 import com.spring.musicmarket.services.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,9 @@ public class AlbumController {
 
     @Autowired
     private MusicService musicService;
+
+    @Autowired
+    private ArtisteService artisteService;
 
 
     @InitBinder
@@ -53,8 +57,9 @@ public class AlbumController {
 
     @GetMapping("/add")
     public String add(ModelMap model,Album album) {
-            model.addAttribute("music", musicService.getAllMusic());
-            model.addAttribute("album", album);
+        model.addAttribute("music", musicService.getAllMusic());
+        model.addAttribute("album", album);
+        model.addAttribute("artiste",artisteService.getAllArtiste());
         return "album/add";
     }
 
@@ -79,9 +84,9 @@ public class AlbumController {
     @PostMapping("/save")
     public String saveArticle(@Valid @ModelAttribute("album") Album album, BindingResult result, ModelMap model) throws ResourceNotFoundException {
         if(result.hasErrors()){
-
             model.addAttribute("music", musicService.getAllMusic());
             model.addAttribute("album",album);
+            model.addAttribute("artiste",artisteService.getAllArtiste());
             return "album/add";
         }
         albumService.save(album);
@@ -92,6 +97,25 @@ public class AlbumController {
     public String delete(@PathVariable("page") long page,@PathVariable("id") long id, ModelMap model) throws ResourceNotFoundException {
         albumService.deleteById(id);
         return "redirect:/album/page/"+page;
+    }
+
+
+
+    @GetMapping("/show/{id}")
+    public String show(@PathVariable("id") long id, ModelMap model) throws ResourceNotFoundException {
+        Album album=albumService.findByIdWithMusic(id);
+        List<Music> music=musicService.getAllMusic();
+        music.forEach(e->{
+            album.getMusicList().forEach(t->{
+                if(e.getId() ==t.getId()){
+                    e.setUsed(true);
+                }
+            });
+        });
+
+        model.addAttribute("music", music);
+        model.addAttribute("album", albumService.findByIdWithMusic(id));
+        return "album/show";
     }
 
 
